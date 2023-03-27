@@ -45,6 +45,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   zombiePref: {fileID: 1063500868937916, guid: 35861510587b7489780fe86970823679, type: 3}
-  minSpawntime: 5
-  maxSpawntime: 10
+  minSpawntime: 3
+  maxSpawntime: 8
   spawnRadius: 3
