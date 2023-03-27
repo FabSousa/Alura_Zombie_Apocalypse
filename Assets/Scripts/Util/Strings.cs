@@ -24,4 +24,7 @@ public struct Strings
 
     //Scenes
     public const string HotelScene = "Hotel";
+
+    //PlayerPrefs
+    public const string BestSurvivedTimeSave = "BestSurvivedTime";
 }
