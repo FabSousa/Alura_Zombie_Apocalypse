@@ -21,6 +21,6 @@ public class GameMode : MonoBehaviour
     }
 
     public void Restart(){
-        SceneManager.LoadScene("Hotel");
+        SceneManager.LoadScene(Strings.HotelScene);
     }
 }

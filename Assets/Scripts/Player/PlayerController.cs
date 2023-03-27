@@ -45,10 +45,9 @@ public class PlayerController : MonoBehaviour, IDamageable
     }
 
     private void ReadInputs(){
-        if (Input.GetButtonDown("Fire1"))
+        if (Input.GetButtonDown("Fire1") && !isDead)
         {
-            if (isDead) gm.Restart();
-            else Shoot();
+            Shoot();
         }
     }
 
