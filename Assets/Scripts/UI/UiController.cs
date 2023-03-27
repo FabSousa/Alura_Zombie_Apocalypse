@@ -12,6 +12,7 @@ public class UiController : MonoBehaviour
     [SerializeField] private GameObject gameOverUI;
     [SerializeField] private Slider PlayerHealthSlider;
     [SerializeField] private TextMeshProUGUI survivedTimeText;
+    [SerializeField] private TextMeshProUGUI bestSurvivedTimeText;
 
     private void Awake()
     {
@@ -32,17 +33,31 @@ public class UiController : MonoBehaviour
     }
 
     public void ShowGameOverText(){
-        int min = (int)(Time.timeSinceLevelLoad / 60);
-        int sec = (int)(Time.timeSinceLevelLoad % 60);
+        int min = (int) Time.timeSinceLevelLoad / 60;
+        int sec = (int) Time.timeSinceLevelLoad % 60;
+        survivedTimeText.text = FormatSurvivedTime("Você sobreviveu por", min, sec);
+        bestSurvivedTimeText.text = SetBestSurvivedTime(min, sec);
+        gameOverUI.SetActive(true);
+    }
 
-        string survivedTime = "Você sobreviveu por ";
+    private string FormatSurvivedTime(string message, int min, int sec){
+        string survivedTime = $"{message} ";
         if(min>0)
             survivedTime += $"{min}minutos e ";
         survivedTime += $"{sec}s";
 
-        survivedTimeText.text = survivedTime;
+        return survivedTime;
+    }
 
-        gameOverUI.SetActive(true);
+    private string SetBestSurvivedTime(int min, int sec){
+        if(Time.timeSinceLevelLoad > PlayerPrefs.GetFloat(Strings.BestSurvivedTimeSave))
+            PlayerPrefs.SetFloat(Strings.BestSurvivedTimeSave, Time.timeSinceLevelLoad);
+        else{
+            min = (int) PlayerPrefs.GetFloat(Strings.BestSurvivedTimeSave) / 60;
+            sec = (int) PlayerPrefs.GetFloat(Strings.BestSurvivedTimeSave) % 60;
+        }
+        
+        return FormatSurvivedTime("Seu melhor tempo foi", min, sec);
     }
 
     public void RestartGame(){
