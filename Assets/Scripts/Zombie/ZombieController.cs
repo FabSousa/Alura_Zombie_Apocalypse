@@ -19,6 +19,10 @@ public class ZombieController : MonoBehaviour, IDamageable
     private float attackRange;
     [SerializeField][Min(0)] private int damage = 30;
 
+    [Header("Drops")]
+    [SerializeField] private MedKit medKitPref;
+    private float medKitdropChance = 0.1f;
+
     private void Awake(){
         mr = GetComponent<ZombieMoveAndRotate>();
         player = GameObject.FindWithTag(Strings.PlayerTag).GetComponent<PlayerController>();
@@ -54,7 +58,13 @@ public class ZombieController : MonoBehaviour, IDamageable
 
     public void Die()
     {
+        MedKitDrop();
         AudioController.instance.PlayOneShot(dieSound);
         Destroy(gameObject);
+    }
+
+    private void MedKitDrop(){
+        if(Random.value <= medKitdropChance)
+            Instantiate(medKitPref, transform.position, Quaternion.identity);
     }
 }

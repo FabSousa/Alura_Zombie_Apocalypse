@@ -677,6 +677,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   dieSound: {fileID: 8300000, guid: d50168c35d741a14e9cc33f9c6a3fb87, type: 3}
   damage: 30
+  medKitPref: {fileID: 2696986716017570360, guid: 6150c6f66b7034ec5b3672478195682a, type: 3}
 --- !u!114 &7925694014614981657
 MonoBehaviour:
   m_ObjectHideFlags: 0
