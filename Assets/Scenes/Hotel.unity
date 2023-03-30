@@ -11164,7 +11164,7 @@ MonoBehaviour:
   PlayerHealthSlider: {fileID: 770712461}
   survivedTimeText: {fileID: 345451150}
   bestSurvivedTimeText: {fileID: 2141092982}
-  killCountText: {fileID: 0}
+  killCountText: {fileID: 135791318}
 --- !u!4 &1391111397 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4656246329960846, guid: bf4e53320739441f58d231c2ee884b66, type: 3}
