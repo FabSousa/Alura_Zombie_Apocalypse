@@ -13,6 +13,8 @@ public class UiController : MonoBehaviour
     [SerializeField] private Slider PlayerHealthSlider;
     [SerializeField] private TextMeshProUGUI survivedTimeText;
     [SerializeField] private TextMeshProUGUI bestSurvivedTimeText;
+    [SerializeField] private TextMeshProUGUI killCountText;
+    private int killCount = 0;
 
     private void Awake()
     {
@@ -30,6 +32,11 @@ public class UiController : MonoBehaviour
 
     public void UpdatePlayerHealthSlider(){
         PlayerHealthSlider.value = playerSt.CurrentHealth;
+    }
+
+    public void UpdateKillCount(){
+        killCount++;
+        killCountText.text = $"X {killCount}";
     }
 
     public void ShowGameOverText(){

@@ -10,6 +10,7 @@ public class ZombieController : MonoBehaviour, IDamageable
     private PlayerController player;
     private ZombieMoveAndRotate mr;
     private Stats st;
+    private UiController ui;
 
     [Header("Audio")]
     [SerializeField] private AudioClip dieSound;
@@ -27,6 +28,7 @@ public class ZombieController : MonoBehaviour, IDamageable
         mr = GetComponent<ZombieMoveAndRotate>();
         player = GameObject.FindWithTag(Strings.PlayerTag).GetComponent<PlayerController>();
         st = GetComponent<Stats>();
+        ui = GameObject.FindObjectOfType(typeof(UiController)) as UiController;
     }
 
     private void Start(){
@@ -58,6 +60,7 @@ public class ZombieController : MonoBehaviour, IDamageable
 
     public void Die()
     {
+        ui.UpdateKillCount();
         MedKitDrop();
         AudioController.instance.PlayOneShot(dieSound);
         Destroy(gameObject);
