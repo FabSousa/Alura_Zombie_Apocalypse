@@ -5,7 +5,7 @@ using UnityEngine;
 
 [RequireComponent(typeof(PlayerMoveAndRotate))]
 [RequireComponent(typeof(Stats))]
-public class PlayerController : MonoBehaviour, IDamageable
+public class PlayerController : MonoBehaviour, IDamageable, IHealable
 {
     [Header("Instances")]
     [SerializeField] private Transform bulletSpawnSpot;
@@ -74,5 +74,21 @@ public class PlayerController : MonoBehaviour, IDamageable
         isDead = true;
         gm.GameOver();
     }
-    
+
+    public void Heal(int healValue)
+    {
+        if(st.CurrentHealth < st.MaxHealth){
+            st.CurrentHealth += healValue;
+
+            if(st.CurrentHealth > st.MaxHealth)
+                st.CurrentHealth = st.MaxHealth;
+
+            ui.UpdatePlayerHealthSlider();
+        }
+    }
+
+    public IEnumerator HealOverTime(int healValue, double time)
+    {
+        throw new NotImplementedException();
+    }
 }
