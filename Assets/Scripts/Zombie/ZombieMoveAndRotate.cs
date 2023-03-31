@@ -22,9 +22,16 @@ public class ZombieMoveAndRotate : MoveAndRotate
 
     public void Move(float speed, out float attackRange)
     {
-        Dist = Vector3.Distance(player.transform.position, transform.position);
+        try
+        {
+            Dist = Vector3.Distance(player.transform.position, transform.position);
+        }
+        catch (System.NullReferenceException)
+        {
+            Dist = Mathf.Infinity;
+        }
+            
         attackRange = this.AttackRange;
-
         if (Dist > chaseRange) WanderDir(speed);
         else if (Dist > attackRange) ChaseDir(speed);
     }
