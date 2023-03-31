@@ -11,6 +11,7 @@ public class ZombieController : MonoBehaviour, IDamageable
     private ZombieMoveAndRotate mr;
     private Stats st;
     private UiController ui;
+    public ZombieSpawner MySpawner {get; set;}
 
     [Header("Audio")]
     [SerializeField] private AudioClip dieSound;
@@ -60,8 +61,9 @@ public class ZombieController : MonoBehaviour, IDamageable
 
     public void Die()
     {
-        ui.UpdateKillCount();
         MedKitDrop();
+        MySpawner.DecreaseZombiesAlive();
+        ui.UpdateKillCount();
         AudioController.instance.PlayOneShot(dieSound);
         Destroy(gameObject);
     }
