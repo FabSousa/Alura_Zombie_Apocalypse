@@ -15,7 +15,7 @@ public class ZombieSpawner : MonoBehaviour
     private float distanceToSpawn = 20;
     private int maxZombiesAlive = 2;
     private int zombiesAlive;
-    private float timeForRiseDifficulty = 10;
+    private float timeForRiseDifficulty = 15;
     private float difficultyRiseCount;
 
     private void Awake()

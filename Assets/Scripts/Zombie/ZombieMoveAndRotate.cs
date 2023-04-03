@@ -16,6 +16,7 @@ public class ZombieMoveAndRotate : MoveAndRotate
 
     private void Start()
     {
+        rb = GetComponent<Rigidbody>();
         player = GameObject.FindWithTag(Strings.PlayerTag).GetComponent<PlayerController>();
         Dist = Vector3.Distance(player.transform.position, transform.position);
     }
@@ -32,8 +33,8 @@ public class ZombieMoveAndRotate : MoveAndRotate
         }
             
         attackRange = this.AttackRange;
-        if (Dist > chaseRange) WanderDir(speed);
-        else if (Dist > attackRange) ChaseDir(speed);
+        if (Dist > chaseRange) Wander(speed);
+        else if (Dist > attackRange) Chase(speed);
     }
 
     public void Rotate()
@@ -41,13 +42,13 @@ public class ZombieMoveAndRotate : MoveAndRotate
         base.Rotate(Dir);
     }
 
-    private void WanderDir(float speed)
+    private void Wander(float speed)
     {
         wanderCount -= Time.deltaTime;
 
         if(wanderCount <= 0){
             newDir = GetRandomPos();
-            wanderCount += wanderTimer;
+            wanderCount += wanderTimer + Random.Range(-1f, 1f);
         }
 
         bool closeEnough = Vector3.Distance(transform.position, newDir) <= 0.05;
@@ -65,10 +66,17 @@ public class ZombieMoveAndRotate : MoveAndRotate
         return randomPos;
     }
 
-    private void ChaseDir(float speed)
+    private void Chase(float speed)
     {
         Dir = (player.transform.position - transform.position).normalized;
         
         Move(Dir, speed);
+    }
+
+    public IEnumerator ClipThougthTheGround(float timeToDespawnSec){
+        rb.velocity = Vector3.zero;
+        GetComponent<Collider>().enabled = false;
+        yield return new WaitForSeconds(timeToDespawnSec);
+        rb.constraints = RigidbodyConstraints.None;
     }
 }

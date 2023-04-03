@@ -37,4 +37,8 @@ public class ZombieAnimationController : MonoBehaviour
     private void ZombieAttackEnd(){
         zc.DoDamage();
     }
+    
+    public void Die(){
+        animator.SetTrigger(Strings.ZombieDieTag);
+    }
 }
