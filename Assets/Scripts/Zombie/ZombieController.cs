@@ -14,6 +14,9 @@ public class ZombieController : MonoBehaviour, IDamageable
     private UiController ui;
     public ZombieSpawner MySpawner {get; set;}
 
+    [Header("Skins")]
+    [SerializeField] private GameObject[] skins;
+
     [Header("Audio")]
     [SerializeField] private AudioClip dieSound;
 
@@ -47,7 +50,7 @@ public class ZombieController : MonoBehaviour, IDamageable
     }
 
     private void RandomizeSkin(){
-        transform.GetChild(Random.Range(1, 28)).gameObject.SetActive(true);
+        transform.GetChild(Random.Range(1, skins.Length)).gameObject.SetActive(true);
     }
 
     public void DoDamage(){
