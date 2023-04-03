@@ -21,6 +21,7 @@ public struct Strings
     //-Zumbie
     public const string IsAtacking = "IsAtacking";
     public const string ZombieMovTag = "Mov";
+    public const string ZombieDieTag = "Die";
 
     //Scenes
     public const string HotelScene = "Hotel";

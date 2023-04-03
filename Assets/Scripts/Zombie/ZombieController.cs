@@ -9,6 +9,7 @@ public class ZombieController : MonoBehaviour, IDamageable
     [Header("instances")]
     private PlayerController player;
     private ZombieMoveAndRotate mr;
+    private ZombieAnimationController ac;
     private Stats st;
     private UiController ui;
     public ZombieSpawner MySpawner {get; set;}
@@ -25,8 +26,12 @@ public class ZombieController : MonoBehaviour, IDamageable
     [SerializeField] private MedKit medKitPref;
     private float medKitdropChance = 0.1f;
 
+    [Header("Despawn")]
+    [SerializeField][Min(0)] private float timeToDespawnSec = 2;
+
     private void Awake(){
         mr = GetComponent<ZombieMoveAndRotate>();
+        ac = GetComponent<ZombieAnimationController>();
         player = GameObject.FindWithTag(Strings.PlayerTag).GetComponent<PlayerController>();
         st = GetComponent<Stats>();
         ui = GameObject.FindObjectOfType(typeof(UiController)) as UiController;
@@ -65,7 +70,10 @@ public class ZombieController : MonoBehaviour, IDamageable
         MySpawner.DecreaseZombiesAlive();
         ui.UpdateKillCount();
         AudioController.instance.PlayOneShot(dieSound);
-        Destroy(gameObject);
+        ac.Die();
+        StartCoroutine(mr.ClipThougthTheGround(timeToDespawnSec));
+        Destroy(gameObject, timeToDespawnSec+1);
+        this.enabled = false;
     }
 
     private void MedKitDrop(){
