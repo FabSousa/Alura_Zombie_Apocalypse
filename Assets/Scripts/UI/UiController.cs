@@ -49,8 +49,12 @@ public class UiController : MonoBehaviour
 
     private string FormatSurvivedTime(string message, int min, int sec){
         string survivedTime = $"{message} ";
-        if(min>0)
-            survivedTime += $"{min}minutos e ";
+        if(min>0){
+            if(min > 1)
+                survivedTime += $"{min} minutos e ";
+            else
+                survivedTime += $"{min} minuto e ";
+        }
         survivedTime += $"{sec}s";
 
         return survivedTime;
