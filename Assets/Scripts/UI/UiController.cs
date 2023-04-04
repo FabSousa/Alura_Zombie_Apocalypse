@@ -13,6 +13,8 @@ public class UiController : MonoBehaviour
     [SerializeField] private Slider PlayerHealthSlider;
     [SerializeField] private TextMeshProUGUI survivedTimeText;
     [SerializeField] private TextMeshProUGUI bestSurvivedTimeText;
+    [SerializeField] private TextMeshProUGUI killCountText;
+    private int killCount = 0;
 
     private void Awake()
     {
@@ -32,6 +34,11 @@ public class UiController : MonoBehaviour
         PlayerHealthSlider.value = playerSt.CurrentHealth;
     }
 
+    public void UpdateKillCount(){
+        killCount++;
+        killCountText.text = $"X {killCount}";
+    }
+
     public void ShowGameOverText(){
         int min = (int) Time.timeSinceLevelLoad / 60;
         int sec = (int) Time.timeSinceLevelLoad % 60;
@@ -42,8 +49,12 @@ public class UiController : MonoBehaviour
 
     private string FormatSurvivedTime(string message, int min, int sec){
         string survivedTime = $"{message} ";
-        if(min>0)
-            survivedTime += $"{min}minutos e ";
+        if(min>0){
+            if(min > 1)
+                survivedTime += $"{min} minutos e ";
+            else
+                survivedTime += $"{min} minuto e ";
+        }
         survivedTime += $"{sec}s";
 
         return survivedTime;

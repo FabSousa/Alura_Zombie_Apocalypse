@@ -8,6 +8,8 @@ public struct Strings
     public const string UiTag = "UI";
     public const string CoreScriptsTag = "CoreScripts";
     public const string PlayerTag = "Player";
+    public const string EnemyTag = "enemy";
+    public const string BossTag = "Boss";    
 
     //Masks
     public const string FloorMask = "Floor";
@@ -16,11 +18,12 @@ public struct Strings
     //Aminations
 
     //-Player
-    public const string PlayerMovTag = "Mov";
+    public const string PlayerMovAnimation = "Mov";
 
     //-Zumbie
-    public const string IsAtacking = "IsAtacking";
-    public const string ZombieMovTag = "Mov";
+    public const string IsAtackingAnimation = "IsAtacking";
+    public const string ZombieMovAnimation = "Mov";
+    public const string ZombieDieAnimation = "Die";
 
     //Scenes
     public const string HotelScene = "Hotel";

@@ -5,7 +5,7 @@ using UnityEngine;
 [RequireComponent(typeof(Rigidbody))]
 public abstract class MoveAndRotate : MonoBehaviour
 {
-    private Rigidbody rb;
+    protected Rigidbody rb;
 
     private void Awake()
     {
