@@ -16,7 +16,6 @@ public class ZombieMoveAndRotate : MoveAndRotate
 
     private void Start()
     {
-        rb = GetComponent<Rigidbody>();
         player = GameObject.FindWithTag(Strings.PlayerTag).GetComponent<PlayerController>();
         Dist = Vector3.Distance(player.transform.position, transform.position);
     }

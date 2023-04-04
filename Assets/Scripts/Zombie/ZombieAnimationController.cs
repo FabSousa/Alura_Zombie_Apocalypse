@@ -26,12 +26,12 @@ public class ZombieAnimationController : MonoBehaviour
     }
 
     private void SetParameters(){
-        animator.SetFloat(Strings.ZombieMovTag, zmr.Dir.magnitude);
+        animator.SetFloat(Strings.ZombieMovAnimation, zmr.Dir.magnitude);
     }
 
     private void AtackAnimation(){
-        if(zmr.Dist > zmr.AttackRange)  animator.SetBool(Strings.IsAtacking, false);
-        else animator.SetBool(Strings.IsAtacking, true);
+        if(zmr.Dist > zmr.AttackRange)  animator.SetBool(Strings.IsAtackingAnimation, false);
+        else animator.SetBool(Strings.IsAtackingAnimation, true);
     }
 
     private void ZombieAttackEnd(){
@@ -39,6 +39,6 @@ public class ZombieAnimationController : MonoBehaviour
     }
     
     public void Die(){
-        animator.SetTrigger(Strings.ZombieDieTag);
+        animator.SetTrigger(Strings.ZombieDieAnimation);
     }
 }
