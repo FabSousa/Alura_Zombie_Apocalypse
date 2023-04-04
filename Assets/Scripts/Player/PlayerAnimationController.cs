@@ -17,6 +17,6 @@ public class PlayerAnimationController : MonoBehaviour
 
     void Update()
     {
-        animator.SetFloat(Strings.PlayerMovTag, playerMoveAndRotate.Dir.magnitude);
+        animator.SetFloat(Strings.PlayerMovAnimation, playerMoveAndRotate.Dir.magnitude);
     }
 }

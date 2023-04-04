@@ -19,9 +19,11 @@ public class Bullet : MonoBehaviour
     }
 
     private void OnTriggerEnter(Collider other){
-        if(other.tag == "enemy" && other.GetComponent<ZombieController>() != null){
+        if(other.tag == Strings.EnemyTag && other.GetComponent<ZombieController>() != null)
             other.GetComponent<ZombieController>().TakeDamage(damage);
-        }
+        
+        if(other.tag == Strings.BossTag && other.GetComponent<ZombieBossController>() != null)
+            other.GetComponent<ZombieBossController>().TakeDamage(damage);
 
         Destroy(gameObject);
     }
