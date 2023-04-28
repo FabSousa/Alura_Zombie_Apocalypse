@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
+using UnityEngine.UI;
 
 [RequireComponent(typeof(NavMeshAgent))]
 [RequireComponent(typeof(Stats))]
@@ -16,6 +17,7 @@ public class ZombieBossController : MonoBehaviour, IDamageable
     private ZombieBossAnimationController animationController;
     private ZombieMoveAndRotate moveAndRotate;
     private Stats stats;
+    [SerializeField] private Slider healthBar;
 
     [Header("Audio")]
     [SerializeField] private AudioClip dieSound;
@@ -38,11 +40,16 @@ public class ZombieBossController : MonoBehaviour, IDamageable
         animationController = GetComponent<ZombieBossAnimationController>();
 
         navMeshAgent.speed = stats.Speed;
-        attackRange = navMeshAgent.stoppingDistance;
+        attackRange = navMeshAgent.stoppingDistance; 
+    }
+
+    private void Start(){
+        healthBar.maxValue = stats.MaxHealth;
     }
 
     private void Update()
     {
+        UpdateUI();
         navMeshAgent.SetDestination(player.transform.position);
         animationController.SetSpeed(navMeshAgent.velocity.magnitude);
 
@@ -58,6 +65,10 @@ public class ZombieBossController : MonoBehaviour, IDamageable
         }
     }
 
+    private void UpdateUI(){
+        healthBar.value = stats.CurrentHealth;
+    }
+
     public void DoDamage()
     {
         if (navMeshAgent.remainingDistance <= attackRange + attackRangeOffset)
@@ -67,9 +78,11 @@ public class ZombieBossController : MonoBehaviour, IDamageable
     public void TakeDamage(int damage)
     {
         stats.CurrentHealth -= damage;
+        // UpdateUI();
         if (stats.CurrentHealth <= 0)
         {
             stats.CurrentHealth = 0;
+            UpdateUI();
             Die();
         }
     }
