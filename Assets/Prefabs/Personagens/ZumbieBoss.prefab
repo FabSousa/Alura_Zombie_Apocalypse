@@ -217,7 +217,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 33d611ab0a2479148b0b1e571849f398, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 0ff54fb82c97540468ed5fba1bce914c, type: 3}
   m_Type: 1
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -491,9 +491,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   medKit: {fileID: 1060151288946202, guid: 6150c6f66b7034ec5b3672478195682a, type: 3}
   healthBar: {fileID: 1594448275}
+  healthBarImage: {fileID: 1320632060}
   dieSound: {fileID: 8300000, guid: d50168c35d741a14e9cc33f9c6a3fb87, type: 3}
   damage: 40
   timeToDespawnSec: 2
+  minHealthColor: {r: 1, g: 0.19215687, b: 0.19215687, a: 1}
+  maxHealthColor: {r: 0.2829485, g: 1, b: 0.30588236, a: 1}
 --- !u!114 &2939141116655342851
 MonoBehaviour:
   m_ObjectHideFlags: 0

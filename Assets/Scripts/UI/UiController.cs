@@ -14,6 +14,7 @@ public class UiController : MonoBehaviour
     [SerializeField] private TextMeshProUGUI survivedTimeText;
     [SerializeField] private TextMeshProUGUI bestSurvivedTimeText;
     [SerializeField] private TextMeshProUGUI killCountText;
+    [SerializeField] private TextMeshProUGUI bossSpawnWarningText;
     private int killCount = 0;
 
     private void Awake()
@@ -75,4 +76,23 @@ public class UiController : MonoBehaviour
         gm.Restart();
     }
 
+    public void ShowBossSpawnWarning(float duration, float fadeDuration){
+        StartCoroutine(ShowTempText(bossSpawnWarningText, duration, fadeDuration));
+        }
+
+    private IEnumerator ShowTempText(TextMeshProUGUI text, float duration, float fadeDuration){
+        text.gameObject.SetActive(true);
+        Color textColor = text.color;
+        textColor.a = 1;
+        text.color = textColor;
+        yield return new WaitForSeconds(duration);
+        float count = 0;
+        while(text.color.a > 0){
+            count += (Time.deltaTime / fadeDuration);
+            textColor.a = Mathf.Lerp(1, 0, count);
+            text.color = textColor;
+            yield return null;
+        }
+        text.gameObject.SetActive(false);
+    }
 }
