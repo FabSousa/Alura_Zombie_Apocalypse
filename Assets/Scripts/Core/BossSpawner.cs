@@ -7,6 +7,13 @@ public class BossSpawner : MonoBehaviour
     [SerializeField] private GameObject bossPref;
     [SerializeField] private float timeToSpawn = 60;
     private float timeToNextSpawn;
+    private UiController uiController;
+    private float warningTextDuration = 1;
+    private float warningTextFadeDuration = 3;
+
+    void Awake(){
+        uiController = GameObject.FindObjectOfType<UiController>() as UiController;
+    }
 
     void Start()
     {
@@ -16,6 +23,7 @@ public class BossSpawner : MonoBehaviour
     void Update()
     {
         if(Time.timeSinceLevelLoad >= timeToNextSpawn){
+            uiController.ShowBossSpawnWarning(warningTextDuration, warningTextFadeDuration);
             Instantiate(bossPref, transform.position, Quaternion.identity);
             timeToNextSpawn = timeToSpawn + Time.timeSinceLevelLoad;
         }
