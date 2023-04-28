@@ -18,6 +18,7 @@ public class ZombieBossController : MonoBehaviour, IDamageable
     private ZombieMoveAndRotate moveAndRotate;
     private Stats stats;
     [SerializeField] private Slider healthBar;
+    [SerializeField] private Image healthBarImage;
 
     [Header("Audio")]
     [SerializeField] private AudioClip dieSound;
@@ -29,6 +30,10 @@ public class ZombieBossController : MonoBehaviour, IDamageable
 
     [Header("Despawn")]
     [SerializeField][Min(0)] private float timeToDespawnSec = 2;
+
+    [Header("HealthBar")]
+    [SerializeField] private Color minHealthColor;
+    [SerializeField] private Color maxHealthColor;
 
     private void Awake()
     {
@@ -67,6 +72,9 @@ public class ZombieBossController : MonoBehaviour, IDamageable
 
     private void UpdateUI(){
         healthBar.value = stats.CurrentHealth;
+        float healthPercentage = (float) stats.CurrentHealth / stats.MaxHealth;
+        Color currentHealthColor = Color.Lerp(minHealthColor, maxHealthColor, healthPercentage);
+        healthBarImage.color = currentHealthColor;
     }
 
     public void DoDamage()
