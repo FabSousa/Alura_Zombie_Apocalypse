@@ -2681,17 +2681,9 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1524188889}
     m_Modifications:
-    - target: {fileID: 991229185, guid: f5d4c7095c7274ebf926e8ccc88e2f07, type: 3}
-      propertyPath: m_StaticEditorFlags
-      value: 8
-      objectReference: {fileID: 0}
     - target: {fileID: 1552275320654262, guid: f5d4c7095c7274ebf926e8ccc88e2f07, type: 3}
       propertyPath: m_Name
       value: Barril_Fogueira
-      objectReference: {fileID: 0}
-    - target: {fileID: 1552275320654262, guid: f5d4c7095c7274ebf926e8ccc88e2f07, type: 3}
-      propertyPath: m_StaticEditorFlags
-      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 4958319712614426, guid: f5d4c7095c7274ebf926e8ccc88e2f07, type: 3}
       propertyPath: m_RootOrder
@@ -18314,7 +18306,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4865497054350543668, guid: 0dea60e9c4f8ab845a3939f5c438d76b, type: 3}
       propertyPath: timeToSpawn
-      value: 5
+      value: 30
       objectReference: {fileID: 0}
     - target: {fileID: 4865497054350543668, guid: 0dea60e9c4f8ab845a3939f5c438d76b, type: 3}
       propertyPath: spawnPoint.Array.size

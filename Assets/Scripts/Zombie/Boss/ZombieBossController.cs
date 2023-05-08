@@ -19,6 +19,7 @@ public class ZombieBossController : MonoBehaviour, IDamageable
     private Stats stats;
     [SerializeField] private Slider healthBar;
     [SerializeField] private Image healthBarImage;
+    [SerializeField] private ParticleSystem bloodParticle;
 
     [Header("Audio")]
     [SerializeField] private AudioClip dieSound;
@@ -93,6 +94,10 @@ public class ZombieBossController : MonoBehaviour, IDamageable
             UpdateUI();
             Die();
         }
+    }
+
+    public void InstantiateBloodParticle(Vector3 position, Quaternion rotation){
+        Instantiate(bloodParticle, position, rotation);
     }
 
     public void Die()

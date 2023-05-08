@@ -492,6 +492,7 @@ MonoBehaviour:
   medKit: {fileID: 1060151288946202, guid: 6150c6f66b7034ec5b3672478195682a, type: 3}
   healthBar: {fileID: 1594448275}
   healthBarImage: {fileID: 1320632060}
+  bloodParticle: {fileID: 2219343611295619912, guid: 6f1ed3b9c618e634dae0cdac78921ae0, type: 3}
   dieSound: {fileID: 8300000, guid: d50168c35d741a14e9cc33f9c6a3fb87, type: 3}
   damage: 40
   timeToDespawnSec: 2
