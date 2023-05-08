@@ -13,6 +13,7 @@ public class ZombieController : MonoBehaviour, IDamageable
     private Stats st;
     private UiController ui;
     public ZombieSpawner MySpawner {get; set;}
+    [SerializeField] private ParticleSystem bloodParticle;
 
     [Header("Skins")]
     [SerializeField] private GameObject[] skins;
@@ -65,6 +66,10 @@ public class ZombieController : MonoBehaviour, IDamageable
             st.CurrentHealth = 0;
             Die();
         }
+    }
+
+    public void InstantiateBloodParticle(Vector3 position, Quaternion rotation){
+        Instantiate(bloodParticle, position, rotation);
     }
 
     public void Die()

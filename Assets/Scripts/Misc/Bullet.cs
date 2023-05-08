@@ -19,11 +19,19 @@ public class Bullet : MonoBehaviour
     }
 
     private void OnTriggerEnter(Collider other){
-        if(other.tag == Strings.EnemyTag && other.GetComponent<ZombieController>() != null)
-            other.GetComponent<ZombieController>().TakeDamage(damage);
+        Quaternion oppositeRotation = Quaternion.LookRotation(-transform.forward);
+
+        if(other.tag == Strings.EnemyTag && other.GetComponent<ZombieController>() != null){
+            ZombieController zombie = other.GetComponent<ZombieController>();
+            zombie.TakeDamage(damage);
+            zombie.InstantiateBloodParticle(transform.position, oppositeRotation);
+        }
         
-        if(other.tag == Strings.BossTag && other.GetComponent<ZombieBossController>() != null)
-            other.GetComponent<ZombieBossController>().TakeDamage(damage);
+        if(other.tag == Strings.BossTag && other.GetComponent<ZombieBossController>() != null){
+            ZombieBossController boss = other.GetComponent<ZombieBossController>();
+            boss.TakeDamage(damage);
+            boss.InstantiateBloodParticle(transform.position, oppositeRotation);
+        }
 
         Destroy(gameObject);
     }
