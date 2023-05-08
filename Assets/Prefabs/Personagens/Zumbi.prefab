@@ -674,6 +674,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 691d06755b5ecf3458acd77581d04866, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  bloodParticle: {fileID: 2219343611295619912, guid: 6f1ed3b9c618e634dae0cdac78921ae0, type: 3}
   skins:
   - {fileID: 1374577511837298}
   - {fileID: 1407134372661656}
